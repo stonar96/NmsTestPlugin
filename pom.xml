@@ -1,0 +1,17 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.vanillage.nmstestplugin</groupId>
+  <artifactId>nmstestplugin-parent</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>NmsTestPlugin-Parent</name>
+  <description>A NMS test plugin.</description>
+  <modules>
+    <module>Libs</module>
+    <module>NmsTestPlugin</module>
+  </modules>
+  <properties>
+    <minecraftVersion>1.17.1</minecraftVersion>
+    <paperVersion>${minecraftVersion}-R0.1-SNAPSHOT</paperVersion>
+  </properties>
+</project>

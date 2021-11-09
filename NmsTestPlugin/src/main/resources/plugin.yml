@@ -1,0 +1,16 @@
+name: NmsTestPlugin
+main: com.vanillage.nmstestplugin.NmsTestPlugin
+version: 1.0.0-SNAPSHOT
+api-version: 1.17
+description: A NMS test plugin.
+load: POSTWORLD
+depend: []
+softdepend: []
+loadbefore: []
+commands: {}
+#   nmstestplugin:
+#     description: All commands for NmsTestPlugin.
+#     usage: '§cUsage: /<command> <reload, text>'
+#     permission: nmstestplugin.command.nmstestplugin
+#     permission-message: §cYou don't have permissions.
+permissions: {}

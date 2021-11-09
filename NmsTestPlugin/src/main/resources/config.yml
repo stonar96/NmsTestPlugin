@@ -1,0 +1,13 @@
+# This is an example configuration. Lines starting with # are comments and are ignored.
+# 
+# messages:                     # Here you can define custom messages.
+#   reload:
+#   - NmsTestPlugin reloaded.
+#   text:
+#   - Hello world!
+
+messages:
+  reload:
+  - NmsTestPlugin reloaded.
+  text:
+  - Hello world!
