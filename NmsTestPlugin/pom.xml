@@ -22,6 +22,10 @@
       <id>Fabric</id>
       <url>https://maven.fabricmc.net/</url>
     </repository>
+    <repository>
+      <id>minecraft-libraries</id>
+      <url>https://libraries.minecraft.net/</url>
+    </repository>
   </repositories>
   <dependencies>
     <dependency>
@@ -32,8 +36,21 @@
     </dependency>
     <dependency>
       <groupId>io.papermc.paper</groupId>
-      <artifactId>paper</artifactId>
+      <artifactId>paper-mojangapi</artifactId>
       <version>${paperVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.papermc.paper</groupId>
+      <artifactId>paper-server</artifactId>
+      <version>${paperVersion}</version>
+      <classifier>mojang-mapped</classifier>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.mojang</groupId>
+      <artifactId>brigadier</artifactId>
+      <version>1.0.18</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>
@@ -95,7 +112,7 @@
                 <argument>${basedir}/../Libs/target/data/mojang+yarn-spigot-reobf.tiny</argument>
                 <argument>mojang+yarn</argument>
                 <argument>spigot</argument>
-                <argument>${basedir}/../Libs/cache/patched_${minecraftVersion}.jar</argument>
+                <argument>${basedir}/../Libs/versions/${minecraftVersion}/paper-${minecraftVersion}.jar</argument>
               </arguments>
             </configuration>
           </execution>
