@@ -2,8 +2,8 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.vanillage.libs</groupId>
   <artifactId>libs</artifactId>
-  <packaging>pom</packaging>
   <version>1.0.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
   <name>Libs</name>
   <description>Libs.</description>
   <properties>
