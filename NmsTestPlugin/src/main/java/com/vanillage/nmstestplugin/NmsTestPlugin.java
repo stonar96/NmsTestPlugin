@@ -1,5 +1,7 @@
 package com.vanillage.nmstestplugin;
 
+import java.io.File;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.v1_19_R1.CraftServer;
@@ -12,7 +14,10 @@ import net.minecraft.commands.Commands;
 public final class NmsTestPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
-        saveResource("README.txt", false);
+        if (!new File(getDataFolder(), "README.txt").exists()) {
+            saveResource("README.txt", false);
+        }
+
         saveDefaultConfig();
         getConfig().options().copyDefaults(true);
         // saveConfig();
