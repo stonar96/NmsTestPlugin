@@ -10,7 +10,7 @@ loadbefore: []
 commands: {}
 #   nmstestplugin:
 #     description: All commands for NmsTestPlugin.
-#     usage: '§cUsage: /<command> <reload, text>'
+#     usage: '§cUsage: /<command> (reload|text)'
 #     permission: nmstestplugin.command.nmstestplugin
 #     permission-message: §cYou don't have permissions.
 permissions: {}
