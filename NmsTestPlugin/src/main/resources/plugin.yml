@@ -7,7 +7,7 @@ description: A NMS test plugin.
 # depend: []
 # softdepend: []
 # loadbefore: []
-folia-supported: true
+# folia-supported: true
 # commands:
 #   nmstestplugin:
 #     description: All commands for NmsTestPlugin.
