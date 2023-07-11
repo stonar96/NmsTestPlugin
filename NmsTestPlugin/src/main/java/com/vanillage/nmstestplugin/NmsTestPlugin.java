@@ -28,14 +28,14 @@ public final class NmsTestPlugin extends JavaPlugin {
         // Initialize stuff.
         // Register events.
         registerCommands();
-        getLogger().info(getDescription().getFullName() + " enabled");
+        getLogger().info(getPluginMeta().getDisplayName() + " enabled");
     }
 
     @Override
     public void onDisable() {
         unregisterCommands();
         // Cleanup stuff.
-        getLogger().info(getDescription().getFullName() + " disabled");
+        getLogger().info(getPluginMeta().getDisplayName() + " disabled");
     }
 
     public synchronized void onReload() {
@@ -46,7 +46,7 @@ public final class NmsTestPlugin extends JavaPlugin {
         // saveConfig();
         configuration = getConfig();
         // Initialize stuff.
-        getLogger().info(getDescription().getFullName() + " reloaded");
+        getLogger().info(getPluginMeta().getDisplayName() + " reloaded");
     }
 
     public void registerCommands() {
