@@ -100,7 +100,7 @@
           <dependency>
             <groupId>net.fabricmc</groupId>
             <artifactId>tiny-remapper</artifactId>
-            <version>0.8.6</version>
+            <version>0.8.9</version>
             <classifier>fat</classifier>
           </dependency>
         </dependencies>
