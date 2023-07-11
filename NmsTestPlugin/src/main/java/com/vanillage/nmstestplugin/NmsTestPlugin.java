@@ -4,6 +4,7 @@ import java.io.File;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.Configuration;
 import org.bukkit.craftbukkit.v1_20_R1.CraftServer;
 import org.bukkit.craftbukkit.v1_20_R1.command.CraftCommandMap;
 import org.bukkit.craftbukkit.v1_20_R1.entity.CraftPlayer;
@@ -12,6 +13,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import net.minecraft.commands.Commands;
 
 public final class NmsTestPlugin extends JavaPlugin {
+    private volatile Configuration configuration;
+
     @Override
     public void onEnable() {
         if (!new File(getDataFolder(), "README.txt").exists()) {
@@ -21,6 +24,7 @@ public final class NmsTestPlugin extends JavaPlugin {
         saveDefaultConfig();
         getConfig().options().copyDefaults(true);
         // saveConfig();
+        configuration = getConfig();
         // Initialize stuff.
         // Register events.
         registerCommands();
@@ -34,12 +38,13 @@ public final class NmsTestPlugin extends JavaPlugin {
         getLogger().info(getDescription().getFullName() + " disabled");
     }
 
-    public void onReload() {
+    public synchronized void onReload() {
         // Cleanup stuff.
         saveDefaultConfig();
         reloadConfig();
         getConfig().options().copyDefaults(true);
         // saveConfig();
+        configuration = getConfig();
         // Initialize stuff.
         getLogger().info(getDescription().getFullName() + " reloaded");
     }
@@ -72,6 +77,6 @@ public final class NmsTestPlugin extends JavaPlugin {
     }
 
     private void sendMessage(CommandSender sender, String messageName) {
-        sender.sendMessage(getConfig().getStringList("messages." + messageName).toArray(new String[0]));
+        sender.sendMessage(configuration.getStringList("messages." + messageName).toArray(new String[0]));
     }
 }
