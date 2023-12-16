@@ -6,9 +6,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.craftbukkit.v1_20_R2.CraftServer;
-import org.bukkit.craftbukkit.v1_20_R2.command.CraftCommandMap;
-import org.bukkit.craftbukkit.v1_20_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_20_R3.CraftServer;
+import org.bukkit.craftbukkit.v1_20_R3.command.CraftCommandMap;
+import org.bukkit.craftbukkit.v1_20_R3.entity.CraftPlayer;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.google.common.base.Throwables;
