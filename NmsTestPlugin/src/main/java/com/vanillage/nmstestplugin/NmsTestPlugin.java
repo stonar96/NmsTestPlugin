@@ -5,10 +5,13 @@ import java.io.File;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.Configuration;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.craftbukkit.v1_20_R1.CraftServer;
 import org.bukkit.craftbukkit.v1_20_R1.command.CraftCommandMap;
 import org.bukkit.craftbukkit.v1_20_R1.entity.CraftPlayer;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import com.google.common.base.Throwables;
 
 import net.minecraft.commands.Commands;
 
@@ -22,9 +25,11 @@ public final class NmsTestPlugin extends JavaPlugin {
         }
 
         saveDefaultConfig();
-        getConfig().options().copyDefaults(true);
+        FileConfiguration config = getConfig();
+        config.options().copyDefaults(true);
+        // Add defaults.
         // saveConfig();
-        configuration = getConfig();
+        configuration = config;
         // Initialize stuff.
         // Register events.
         registerCommands();
@@ -33,18 +38,65 @@ public final class NmsTestPlugin extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        unregisterCommands();
-        // Cleanup stuff.
+        Throwable throwable = null;
+
+        try {
+            try {
+                unregisterCommands();
+            } catch (Throwable t) {
+                throwable = t;
+            } finally {
+                // Cleanup stuff.
+            }
+        } catch (Throwable t) {
+            if (throwable == null) {
+                throwable = t;
+            } else {
+                throwable.addSuppressed(t);
+            }
+        } finally {
+            if (throwable != null) {
+                Throwables.throwIfUnchecked(throwable);
+                throw new RuntimeException(throwable);
+            }
+        }
+
         getLogger().info(getPluginMeta().getDisplayName() + " disabled");
     }
 
     public synchronized void onReload() {
-        // Cleanup stuff.
+        Throwable throwable = null;
+
+        try {
+            try {
+                // Cleanup stuff.
+            } catch (Throwable t) {
+                throwable = t;
+            } finally {
+                if (throwable != null) {
+                    getServer().getPluginManager().disablePlugin(this);
+                }
+            }
+        } catch (Throwable t) {
+            if (throwable == null) {
+                throwable = t;
+            } else {
+                throwable.addSuppressed(t);
+            }
+        } finally {
+            if (throwable != null) {
+                Throwables.throwIfUnchecked(throwable);
+                throw new RuntimeException(throwable);
+            }
+        }
+
         saveDefaultConfig();
         reloadConfig();
-        getConfig().options().copyDefaults(true);
+        FileConfiguration config = getConfig();
+        config.options().copyDefaults(true);
+        // Add defaults.
         // saveConfig();
-        configuration = getConfig();
+        configuration = config;
         // Initialize stuff.
         getLogger().info(getPluginMeta().getDisplayName() + " reloaded");
     }
